@@ -1,0 +1,427 @@
+/* kithub */
+* {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Audiowide', sans-serif;
+    color: rgb(216, 214, 214);
+    background: url('../img/sunglasscat.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.jumbotron {
+    width: 80%;
+    text-align: center;
+    color: white;
+    background-color: rgb(26, 23, 23);
+    border-bottom: lightgray 2px solid;
+    padding: 10px;
+    padding-top: 20px;
+    position: fixed;
+    z-index: 2;
+}
+
+#scrollbox {
+    color: white;
+    background-color: rgba(219, 23, 206, 0.5);
+    padding: 3px;
+    position: fixed;
+    top: 93%;
+    right: 1%;
+    font-size: 20px;
+}
+
+#greytime {
+    color: grey;
+}
+
+.picoftheday {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+    margin: 0 auto;
+}
+
+#picofday {
+    margin: 50px 0 50px 0;
+}
+
+.avatarwrapper {
+    text-align: center;
+}
+
+#featuredcats {
+    margin-top: 20px;
+    text-align: center;
+    border-bottom: 2px solid rgb(100, 96, 96);
+}
+
+.profilewrapper {
+    padding-top: 16rem;
+    text-align: center;
+}
+
+.avatar-carousel {
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 3rem;
+}
+#overlay {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.75);
+    padding-bottom: 50px;
+}
+
+#centerh3 {
+    margin: 20px auto;
+}
+
+#convocontent {
+    margin-left: 50px;
+}
+
+.replymain {
+    margin-left: 10%;
+}
+.col-sm-4 {
+    text-align: center;
+}
+
+.col-sm-8 {
+    border-radius: 10px;
+}
+.display-4 {
+    display: inline-block;
+    margin: 1rem auto;
+    font-size: 20px;
+}
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+#apiwrapper {
+    padding-top: 17rem;
+    text-align: center;
+}
+
+#returnObject {
+    color: lightgray;
+    display: none;
+}
+
+#imageinfo {
+    color: lightgray;
+    width: 90%;
+    overflow-wrap: break-word;
+}
+
+.convoheader {
+    padding: 10px;
+    border-bottom: .5px solid grey;
+}
+#commentwrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.avatar-main {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto;
+    border-radius: 2.5rem;
+}
+
+.kithub-convo-wrapper {
+    background-color: rgba(219, 23, 206, 0.35);
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    font-family: sans-serif;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#buffer {
+    margin-top: 15rem;
+}
+
+.avatar-convo {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto;
+    border-radius: 2.5rem;
+}
+
+#kithubtitle {
+    text-align: center;
+}
+
+.avatar-generic {
+    border: 2px solid white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.avatar-admin {
+    border: 2px solid rgb(194, 15, 149);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.avatar-admin1 {
+    border: 2px solid rgb(44, 228, 44);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.avatar-main:hover {
+    animation: bounce 1s 1;
+   -webkit-animation: bounce 1s 1;
+   -moz-animation: bounce 1s 1;
+   -o-animation: bounce 1s 1;
+}
+
+.avatar-profile {
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+}
+
+#username {
+    text-align: center;
+}
+
+#cat-1 {
+    background-image: url('../img/amazedcat.jpg');
+    background-size: cover;
+}
+
+#cat-2 {
+    background-image: url('../img/artcat.jpg');
+    background-size: cover;
+}
+#cat-3 {
+    background-image: url('../img/astrocat.jpg');
+    background-size: cover;
+}
+#cat-4 {
+    background-image: url('../img/blackcat.jpg');
+    background-size: cover;
+}
+#cat-5 {
+    background-image: url('../img/burritocat.gif');
+    background-size: cover;
+}
+#cat-6 {
+    background-image: url('../img/cartooncat.jpeg');
+    background-size: cover;
+}
+#cat-7 {
+    background-image: url('../img/confusedcat.jpg');
+    background-size: cover;
+}
+
+#cat-8 {
+    background-image: url('../img/coolcat.jpg');
+    background-size: cover;
+}
+#cat-9 {
+    background-image: url('../img/djcat.jpg');
+    background-size: cover;
+}
+
+#cat-11 {
+    background-image: url('../img/floatingcat.png');
+    background-size: cover;
+}
+#cat-12 {
+    background-image: url('../img/grumpycat.jpg');
+    background-size: cover;
+}
+#cat-13 {
+    background-image: url('../img/helmetcat.jpg');
+    background-size: cover;
+}
+
+#cat-15 {
+    background-image: url('../img/hungrycat.jpg');
+    background-size: cover;
+}
+#cat-16 {
+    background-image: url('../img/nasacat.jpg');
+    background-size: cover;
+}
+#cat-17 {
+    background-image: url('../img/pizzacat.jpg');
+    background-size: cover;
+}
+#cat-18 {
+    background-image: url('../img/poptartcat.gif');
+    background-size: cover;
+}
+#cat-19 {
+    background-image: url('../img/rainbowcat.jpg');
+    background-size: cover;
+}
+
+#cat-20 {
+    background-image: url('../img/ringcat.jpg');
+    background-size: cover;
+}
+#cat-21 {
+    background-image: url('../img/shecat.jpg');
+    background-size: cover;
+}
+#cat-22 {
+    background-image: url('../img/strangecat.jpg');
+    background-size: cover;
+}
+#cat-23 {
+    background-image: url('../img/surprisedcat.gif');
+    background-size: cover;
+}
+
+#cat-30 {
+    background-image: url('../img/unrulyspacecat.jpg');
+    background-size: cover;    
+}
+
+.navbar {
+    height: 2rem;
+}
+
+.nav {
+    margin-top: 10px;
+}
+
+.nav-item {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+a {
+    color: white;
+    font-display: underline;
+    font-size: 15px;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+#about {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#convocontainer {
+    background-color: rgba(219, 23, 206, 0.35);
+    width: 80%;
+    margin: 0 auto;   
+    border-radius: 20px;
+    padding-bottom: 30px;
+    padding: 5px;
+}
+
+.main-hub-convo-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+}
+
+.replywrapper {
+    margin-left: 10%;
+    width: 90%;
+}
+
+.replyreplywrapper {
+    margin-left: 20%;
+    width: 80%;
+}
+
+.replyborder {
+    border-left: 2px solid white;
+    padding-left: 10px;
+}
+
+.replyreplyborder {
+    border-left: 1px dashed rgb(190, 187, 187);
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+#reply {
+    margin-left: 10px;
+}
+
+#like {
+    width: 20px;
+    height: 20px;
+}
+
+#likebutton {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#convobox {
+    font-family: sans-serif;
+    font-style: italic;
+    background-color: rgb(197, 193, 193);
+    border:  2px solid   rgba(219, 23, 206);
+}
+
+#startconvo {
+    color: white;
+    background-color: rgb(152, 27, 144, 0.8);
+    margin-top: 5px;
+    width: 100px;
+    border-radius: 2px;
+    border: 1px solid rgb(197, 193, 193);
+}
+
+.reply {
+    margin-left: 15%;
+}
+
+.replyavatarwrapper {
+    text-align: center;
+    height: 30px;
+    width: 100px;
+}
+
+.avatar-reply {
+    display: block;
+    margin: 0 auto;
+    height:50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+#replytime {
+    font-size: 10px;
+}
+
+.replyreply {
+    padding: 10px;
+}
+
+.replyborder {
+    border-left: 1px solid white;
+    margin-bottom: 5px;
+}

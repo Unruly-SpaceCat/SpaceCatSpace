@@ -1,0 +1,165 @@
+<!------------------------- convo view ------------------------>
+<!-- comment deletes
+reply deletes
+reply likes -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'kithub/css/style.css' %}">
+    <title>Kit-Hub</title>
+</head>
+<body>
+    <div id="overlay">
+        <div class="jumbotron" id="usernav">
+            <div class="avatar-main avatar-{{user.user_level}}" id="cat-{{user.avatar}}"></div>
+            <h1 class="display-4">{{user.username}}</h1>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="../dashboard/{{request.session.username}}">Home Base</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../kithub">Kit-Hub</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="../../logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div id="commentwrapper">
+            <div id="buffer"></div>
+            <div id="trigger"></div>
+            <br><br>
+        </div>
+        <div id="convocontainer">
+            <a href="/kithub">Back</a><!------ first level convo -->
+            <div class="main-hub-convo-wrapper" id="next">
+                <div class="row convoheader">
+                    <div class="col-2">
+                        <div class="avatarwrapper">
+                            <div class="avatar-convo avatar-{{convo.creator.user_level}}" id="cat-{{convo.creator.avatar}}"></div>
+                            <a href="../dashboard/{{convo.creator.username}}">{{convo.creator.username}}</a><br>
+                            {% if convo.creator.username == user.username %}
+                            <a href=#>Edit </a>
+                            {% endif %}
+                            {% if convo.creator.username == user.username %}
+                            <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                            {% endif %}
+                            {% if convo.creator.user_level == 'generic' and user.user_level == 'admin' %}
+                            <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                            {% endif %}
+                            {% if convo.creator.username != user.username and user.user_level == 'admin1' %}
+                            <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-sm-2" id="greytime">{{convo.created_at | timesince }}</div>
+                </div>
+                <p><em>{{convo.content}}</em></p>
+                <img id="like" src="{% static 'kithub/img/catlike3.png' %}" alt="like">
+                <span>{{convo.likes.count}}</span>
+                {% if request.session.username != convo.creator.username %}
+                <a id="likebutton" href="/kithub/{{convo.id}}/likeconvo">Like</a>
+                {% endif %}
+                <a id="reply" href="#">Replies </a> ({{convo.hubcomments.count}})
+                <br>
+                <form action='/kithub/{{convo.id}}/addcomment' method='post'>
+                    {% csrf_token %}
+                <textarea placeholder="Max 1000 characters" maxlength="1000" class="form-control" name="convocomment" id="convobox" rows="1"></textarea>
+                <button id="startconvo" type="submit">Reply</button>
+                </form>
+                <hr>
+            </div>
+            {% for comment in convo.hubcomments.all %}
+            <div class="main-hub-convo-wrapper replywrapper"><!--- second level comment -->
+                <div class="row convoheader">
+                    <div class="col-2">
+                        <div class="avatarwrapper">
+                            <div class="avatar-convo avatar-{{comment.creator.user_level}}" id="cat-{{comment.creator.avatar}}"></div>
+                            <a href="../dashboard/{{comment.creator.username}}">{{comment.creator.username}}</a><br>
+                            {% if comment.creator.username == user.username %}
+                            <a href=#>Edit </a>
+                            {% endif %}
+                            {% if comment.creator.username == user.username %}
+                            <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                            {% endif %}
+                            {% if comment.creator.user_level == 'generic' and user.user_level == 'admin' %}
+                            <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                            {% endif %}
+                            {% if comment.creator.username != user.username and user.user_level == 'admin1' %}
+                            <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-sm-2" id="greytime">{{comment.created_at | timesince}}</div>
+                </div>
+                <div class="replyborder">
+                <p><em>{{comment.content}}</em></p>
+                <img id="like" src="{% static 'kithub/img/catlike3.png' %}" alt="like">
+                <span>{{comment.likes.count}}</span>
+                {% if request.session.username != comment.creator.username %}
+                <a id="likebutton" href="/kithub/{{convo.id}}/{{comment.id}}/likecomment">Like</a>
+                {% endif %}
+                <a id="reply" href="#">Replies </a> ({{comment.hubreplies.count}})
+                <br>
+                <form action='/kithub/{{convo.id}}/{{comment.id}}/addreply' method='post'>
+                    {% csrf_token %}
+                <textarea name="commentreply" placeholder="Max 500 characters" maxlength="500" class="form-control" id="convobox" rows="1"></textarea>
+                <button id="startconvo" type="submit">Reply</button>
+                </form>
+                </div>
+                <hr>
+            </div>
+            {% for reply in comment.hubreplies.all %}
+            <!-- jquery id second level reply -->
+            <div class="main-hub-convo-wrapper replyreplywrapper" id="{{reply.id}}">
+                <div class="row convoheader">
+                    <div class="col-2">
+                        <div class="avatarwrapper">
+                            <div class="avatar-convo avatar-{{reply.creator.user_level}}" id="cat-{{reply.creator.avatar}}"></div>
+                            <a href="../dashboard/{{reply.creator.username}}">{{reply.creator.username}}</a><br>
+                            {% if reply.creator.username == user.username %}
+                            <a href=#>Edit </a>
+                            {% endif %}
+                            {% if reply.creator.username == user.username %}
+                            <a href="/kithub/{{convo.id}}/{{comment.id}}/delete"> Delete</a>
+                            {% endif %}
+                            {% if reply.creator.user_level == 'generic' and user.user_level == 'admin' %}
+                            <a href="/kithub/{{convo.id}}/{{comment.id}}/delete"> Delete</a>
+                            {% endif %}
+                            {% if reply.creator.username != user.username and user.user_level == 'admin1' %}
+                            <a href="/kithub/{{convo.id}}/{{comment.id}}/delete"> Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-sm-2" id="greytime">{{reply.created_at | timesince}}</div>
+                </div>
+                <div class="replyreplyborder">
+                <p><em>{{reply.content}}</em></p>
+                <img id="like" src="{% static 'kithub/img/catlike3.png' %}" alt="like">
+                <span>{{reply.likes.count}}</span>
+                {% if request.session.username != reply.creator.username %}
+                <a id="likebutton" href="#">Like</a>
+                {% endif %}
+            </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            <!-- more replies go here -->
+       <!-- end of div with id for jquery -->
+    </div>
+    <div id="scrollbox"><a href="#top">Top</div> 
+</body>
+</html>

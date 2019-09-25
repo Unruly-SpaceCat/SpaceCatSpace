@@ -1,0 +1,443 @@
+/* dashboard */
+* {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Audiowide', sans-serif;
+    color: rgb(216, 214, 214);
+    background: url('../img/sunglasscat.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#adminview {
+    padding-top: 20rem;
+}
+
+.avatar-adminview {
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+}
+
+.one-friend-wrapper {
+    width: 20%;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.postbox {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.jumbotron {
+    width: 80%;
+    text-align: center;
+    color: white;
+    background-color: rgb(26, 23, 23);
+    border-bottom: lightgray 2px solid;
+    padding: 10px;
+    padding-top: 20px;
+    position: fixed;
+    z-index: 2;
+}
+
+#avatarwrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;    
+}
+
+#makefriend {
+    background-color: rgba(219, 23, 206, 0.35);
+    color: white;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#unfriend {
+    background-color: rgba(40, 192, 17, 0.35);
+    color: white;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 10px;  
+}
+
+.profilewrapper {
+    padding-top: 20rem;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#avatarmain {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+#friendwrapper {
+    display: inline-block;
+}
+
+#overlay {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.75);
+    padding-bottom: 500px;
+}
+.col-sm-4 {
+    text-align: center;
+}
+
+.col-sm-8 {
+    border-radius: 10px;
+}
+.display-4 {
+    display: inline-block;
+    margin: 1rem auto;
+    font-size: 25px;
+}
+
+.myfriends {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.offset-left {
+    margin-left: 10%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+#centered {
+    width: 80%;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.aboutme {
+    font-size: 13px;
+}
+
+.friendactivity {
+    padding: 15px;
+}
+
+#recentactivity {
+    display: inline-block;
+}
+
+.posttime {
+    font-size: 10px;
+}
+
+.public {
+    background-color: rgba(219, 23, 206, 0.35);
+}
+
+#startconvo:hover {
+    color: hotpink;
+}
+
+.private {
+    background-color: rgba(40, 192, 17, 0.35);
+}
+
+#privateconvo:hover {
+    color: hotpink;
+}
+
+#makeprivate {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(219, 23, 206, 0.35);
+}
+
+.profile-convo-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 15px;
+    font-family: sans-serif;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#adminbtn {
+    background-color: transparent;
+    color: white;
+}
+
+#adminbtn:hover {
+    color: hotpink;
+}
+
+#privatemessage {
+    font-family: 'Audiowide';
+    font-size: 15px;
+}
+.avatarwrapper {
+    text-align: center;
+}
+#like {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar-convo {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto;
+    border-radius: 2.5rem;
+}
+
+#allfriendsh1 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.avatar-friendlist {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+}
+
+.fl-col {
+    margin-bottom: 5px;
+    overflow-wrap: break-word;
+}
+
+.avatar-generic {
+    border: 2px solid white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.avatar-admin {
+    border: 2px solid rgb(194, 15, 149);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.avatar-admin1 {
+    border: 2px solid rgb(44, 228, 44);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+}
+
+.avatar-main {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto;
+    border-radius: 2.5rem;
+}
+
+.friend-show {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto;
+    border-radius: 2.5rem;
+}
+
+.avatar-main:hover {
+    animation: bounce 1s 1;
+   -webkit-animation: bounce 1s 1;
+   -moz-animation: bounce 1s 1;
+   -o-animation: bounce 1s 1;
+}
+
+.avatar-profile {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+    margin: 0 auto;
+}
+
+#profileconvo {
+    margin-top: 15px;
+}
+
+#convobox {
+    font-family: sans-serif;
+    font-style: italic;
+    background-color: rgb(197, 193, 193);
+    border:  2px solid   rgba(219, 23, 206);
+}
+
+#startconvo {
+    color: white;
+    background-color: rgb(152, 27, 144, 0.8);
+    margin-top: 5px;
+    width: 100px;
+    border-radius: 2px;
+    border: 1px solid rgb(197, 193, 193);
+    margin-right: 20px;
+}
+
+#privateconvo{
+    color: white;
+    background-color: rgba(40, 192, 17, 0.35);
+    margin-top: 5px;
+    width: 100px;
+    border-radius: 2px;
+    border: 1px solid rgb(197, 193, 193);
+}
+
+#submitform {
+    color: white;
+    background-color: rgb(152, 27, 144, 0.8);
+    margin-top: 5px;
+    width: 150px;
+    border-radius: 2px;
+    border: 1px solid rgb(197, 193, 193);
+
+}
+
+#username {
+    text-align: center;
+}
+
+#cat-1 {
+    background-image: url('../img/amazedcat.jpg');
+    background-size: cover;
+}
+
+#cat-2 {
+    background-image: url('../img/artcat.jpg');
+    background-size: cover;
+}
+#cat-3 {
+    background-image: url('../img/astrocat.jpg');
+    background-size: cover;
+}
+#cat-4 {
+    background-image: url('../img/blackcat.jpg');
+    background-size: cover;
+}
+#cat-5 {
+    background-image: url('../img/burritocat.gif');
+    background-size: cover;
+}
+#cat-6 {
+    background-image: url('../img/cartooncat.jpeg');
+    background-size: cover;
+}
+#cat-7 {
+    background-image: url('../img/confusedcat.jpg');
+    background-size: cover;
+}
+
+#cat-8 {
+    background-image: url('../img/coolcat.jpg');
+    background-size: cover;
+}
+#cat-9 {
+    background-image: url('../img/djcat.jpg');
+    background-size: cover;
+}
+
+#cat-11 {
+    background-image: url('../img/floatingcat.png');
+    background-size: cover;
+}
+#cat-12 {
+    background-image: url('../img/grumpycat.jpg');
+    background-size: cover;
+}
+#cat-13 {
+    background-image: url('../img/helmetcat.jpg');
+    background-size: cover;
+}
+
+#cat-15 {
+    background-image: url('../img/hungrycat.jpg');
+    background-size: cover;
+}
+#cat-16 {
+    background-image: url('../img/nasacat.jpg');
+    background-size: cover;
+}
+#cat-17 {
+    background-image: url('../img/pizzacat.jpg');
+    background-size: cover;
+}
+#cat-18 {
+    background-image: url('../img/poptartcat.gif');
+    background-size: cover;
+}
+#cat-19 {
+    background-image: url('../img/rainbowcat.jpg');
+    background-size: cover;
+}
+
+#cat-20 {
+    background-image: url('../img/ringcat.jpg');
+    background-size: cover;
+}
+#cat-21 {
+    background-image: url('../img/shecat.jpg');
+    background-size: cover;
+}
+#cat-22 {
+    background-image: url('../img/strangecat.jpg');
+    background-size: cover;
+}
+#cat-23 {
+    background-image: url('../img/surprisedcat.gif');
+    background-size: cover;
+}
+
+#cat-30 {
+    background-image: url('../img/unrulyspacecat.jpg');
+    background-size: cover;    
+}
+
+.navbar {
+    height: 2rem;
+}
+
+.nav {
+    margin-top: 10px;
+}
+
+.nav-item {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+a {
+    color: white;
+    font-display: underline;
+    font-size: .75rem;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+#about {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#editprofilewrapper {
+    padding-top: 17rem;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.form-group {
+    margin-bottom: 40px;
+}

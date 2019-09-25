@@ -1,0 +1,122 @@
+<!------------------------- kithub ------------------------>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'kithub/css/style.css' %}">
+    <title>Kit-Hub</title>
+</head>
+<body>
+    <div id="overlay">
+        <div class="jumbotron" id="usernav">
+            <div class="avatar-main avatar-{{user.user_level}}" id="cat-{{user.avatar}}"></div>
+            <h1 class="display-4">{{request.session.username}}</h1>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="../dashboard/{{request.session.username}}">Home Base</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Kit-Hub</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container profilewrapper" id="top">
+            <h3>Featured SpaceCats</h3>
+            <div id="featuredcats" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="avatarwrapper">
+                            <div class="avatar-carousel avatar-admin" id="cat-3"></div><br>
+                            <a href="../dashboard/CosmoNipper"><h4>CosmoNipper</h4></a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="avatarwrapper">
+                            <div class="avatar-carousel avatar-generic" id="cat-12"></div>
+                            <a href="../dashboard/MadCatt"><h4>MadCatt</h4></a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="avatarwrapper">
+                            <div class="avatar-carousel avatar-generic" id="cat-13"></div>
+                            <a href="../dashboard/StarGrazer"><h4>StarGrazer</h4></a>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#featuredcats" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#featuredcats" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div> <!--- end of profilewrapper -->
+        <div id="commentwrapper">
+            <h1 id="kithubtitle">Kit-Hub</h1>
+            <div id="picofday">
+                <div class="avatarwrapper">
+                    <div class="picoftheday avatar-admin" id="cat-16"></div>
+                <a href="/kithub/APOD">NAScAt's Pic of the day!</a>
+            </div>
+            <div id="trigger">
+            <h3>Start a Conversation</h3>
+            <form action='/kithub/addconvo' method='post'>
+                {% csrf_token %}
+            <textarea placeholder="Max 1000 characters" maxlength="1000" class="form-control" name="newconvo" id="convobox" rows="4"></textarea>
+            <button id="startconvo" type="submit">Launch</button></div></form>
+            </div>
+            <br><br>
+            <div class="row">
+            <h3 id="centerh3">Latest Conversations</h3>
+            </div>
+        {% for convo in all_convos %}
+        <div class="kithub-convo-wrapper" id="next">
+            <div class="row convoheader">
+                <div class="col-2">
+                <div class="avatarwrapper">
+                <div class="avatar-convo avatar-{{convo.creator.user_level}}" id="cat-{{convo.creator.avatar}}"></div>
+                <a href="../dashboard/{{convo.creator.username}}">{{convo.creator.username}}</a><br>
+                {% if convo.creator.username == user.username %}
+                <a href=#>Edit </a>
+                {% endif %}
+                {% if convo.creator.username == user.username %}
+                <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                {% endif %}
+                {% if convo.creator.user_level == 'generic' and user.user_level == 'admin' %}
+                <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                {% endif %}
+                {% if convo.creator.username != user.username and user.user_level == 'admin1' %}
+                <a href="/kithub/{{convo.id}}/delete"> Delete</a>
+                {% endif %}
+                </div>
+                </div>
+                <div class="col-8"></div>
+                <div class="col-sm-2" id="greytime">{{convo.created_at | timesince}} ago</div>
+            </div>
+            <p id="convocontent"><em>{{convo.content}}</em></p>
+            <img id="like" src="{% static 'kithub/img/catlike3.png' %}" alt="like">
+            <span>{{convo.likes.count}}</span>
+            {% if user.username != convo.creator.username %}
+            <a id="likebutton" href="/kithub/{{convo.id}}/likeconvo">Like </a> 
+            {% endif %}
+            <a id="reply" href="{{convo.id}}"> Reply</a> {{convo.hubcomments.count}}
+        </div>
+        {% endfor %}
+    </div>
+    <div id="scrollbox"><a href="#top">Top</div> 
+</body>
+</html>

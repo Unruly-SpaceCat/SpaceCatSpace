@@ -1,0 +1,84 @@
+<!------------------login ---------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+    <title>Login/Registration</title>
+</head>
+<body>
+    <div id="overlay">
+    <div class="jumbotron" data-overlay="0.5">
+        <h1>SpaceCat Space</h1>
+        <h3>A space for cats that like space</h3>    
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Enter the CATmosphere</h3>
+                    <form action='/login' method='post'>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="usernameinput">Username*</label>
+                            <input type="text" class="form-control" required name='username'>
+                            <small id="emailHelp" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordinput">Password*</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" required name="pwrd">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Launch</button>
+                    </form>
+                </div>
+                <div class="col">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <h3>Request Airspace</h3>
+                    <form action='/adduser' method='post' id="regForm">
+                        {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username*</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="uname">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Email*</label>
+                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Ex. SpaceCat@cat.com" required name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Password*</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="pw1">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirm Password*</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" required name="pw2">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                          <label>
+                            Confirm you're not a dog
+                          </label>
+                        </div>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

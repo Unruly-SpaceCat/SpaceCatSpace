@@ -1,0 +1,82 @@
+<!------------------------- kithub ------------------------>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'kithub/css/style.css' %}">
+    <title>Kit-Hub</title>
+</head>
+<body>
+    <div id="overlay">
+        <div class="jumbotron" id="usernav">
+            <div class="avatar-main avatar-{{user.user_level}}" id="cat-{{user.avatar}}"></div>
+            <h1 class="display-4">{{request.session.username}}</h1>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="../dashboard/{{request.session.username}}">Home Base</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/kithub">Kit-Hub</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div id="apiwrapper">
+        <h3>apod.nasa.gov</h3>
+  
+        <img id="apod_img_id" width="50%"/>
+  
+        <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
+        <p id="copyright"></p>
+  
+        <h3 id="apod_title"></h3>
+        <p id="apod_explaination"></p>
+        <br/>
+        </div>
+        <div id="imageinfo">
+        <pre id="returnObject"></pre>
+        </div>
+    </div> 
+</body>
+</html>
+<script>
+
+    var url = "https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo";
+
+
+    $.ajax({
+      url: url,
+      success: function(result){
+      if("copyright" in result) {
+        $("#copyright").text("Image Credits: " + result.copyright);
+      }
+      else {
+        $("#copyright").text("Image Credits: " + "Public Domain");
+      }
+      
+      if(result.media_type == "video") {
+        $("#apod_img_id").css("display", "none"); 
+        $("#apod_vid_id").attr("src", result.url);
+      }
+      else {
+        $("#apod_vid_id").css("display", "none"); 
+        $("#apod_img_id").attr("src", result.url);
+      }
+      $("#reqObject").text(url);
+      $("#returnObject").text(JSON.stringify(result, null, 4));  
+      $("#apod_explaination").text(result.explanation);
+      $("#apod_title").text(result.title);
+    }
+    });</script>

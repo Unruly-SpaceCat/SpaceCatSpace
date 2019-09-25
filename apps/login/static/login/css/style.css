@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('../img/sunglasscat.jpg');
+    background-size: cover;
+    font-family: 'Audiowide', sans-serif;
+}
+
+.jumbotron {
+    text-align: center;
+    color: white;
+    background-color: black;
+    opacity: .5;
+    border-bottom: lightgray 2px solid;
+}
+
+#overlay {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.col {
+    padding: 20px;
+    color: white;
+    background-color: rgb(111, 16, 116);
+    margin: 4%;
+    border-radius: 3rem;
+    border: 2px solid white;
+    opacity: .7;
+}
